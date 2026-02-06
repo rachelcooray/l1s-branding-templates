@@ -26,10 +26,16 @@ export const TEMPLATES_CONFIG = {
                     { id: 'amount', label: 'Amount', type: 'text' }
                 ]
             },
-            { id: 'subtotal', label: 'Subtotal', type: 'text' },
-            { id: 'tax', label: 'Tax (VAT)', type: 'text' },
-            { id: 'total', label: 'Total Amount', type: 'text' },
-            { id: 'payment_terms', label: 'Payment Terms', type: 'textarea' },
+            { id: 'tax', label: 'Tax %', type: 'text' },
+            { id: 'subtotal', label: 'Subtotal (Auto)', type: 'text' },
+            { id: 'total', label: 'Total (Auto)', type: 'text' },
+            { id: 'bank.name', label: 'Bank Name', type: 'text' },
+            { id: 'bank.account_name', label: 'Account Name', type: 'text' },
+            { id: 'bank.sort_code', label: 'Sort Code', type: 'text' },
+            { id: 'bank.account_number', label: 'Account Number', type: 'text' },
+            { id: 'bank.iban', label: 'IBAN', type: 'text' },
+            { id: 'bank.swift', label: 'SWIFT/BIC', type: 'text' },
+            { id: 'payment_terms', label: 'Notes', type: 'textarea' },
         ],
         initialData: {
             invoice_number: 'L1-INV-2026-001',
@@ -40,9 +46,18 @@ export const TEMPLATES_CONFIG = {
                 { description: 'Web Application Design & Dev', amount: '$4,500' },
                 { description: 'Brand Identity System', amount: '$1,200' }
             ],
-            subtotal: '$5,700',
-            tax: '$1,140',
-            total: '$6,840',
+            tax: '20',
+            subtotal: '$5,700.00',
+            tax_amount: '$1,140.00',
+            total: '$6,840.00',
+            bank: {
+                name: 'Monzo Bank',
+                account_name: 'LAYER1 STUDIO LTD',
+                sort_code: '00-11-22',
+                account_number: '12345678',
+                iban: 'GB82 MONZ 1234 5678 9012 34',
+                swift: 'MONZGB21'
+            },
             payment_terms: 'Payment due within 14 days via Bank Transfer.'
         }
     },
@@ -51,6 +66,8 @@ export const TEMPLATES_CONFIG = {
         html: letterHtml,
         css: stylesCss,
         fields: [
+            { id: 'our_ref', label: 'Our Reference', type: 'text' },
+            { id: 'your_ref', label: 'Your Reference', type: 'text' },
             { id: 'recipient_name', label: 'Recipient Name', type: 'text' },
             { id: 'recipient_title', label: 'Recipient Title', type: 'text' },
             { id: 'recipient_address', label: 'Recipient Address', type: 'textarea' },
@@ -63,13 +80,15 @@ export const TEMPLATES_CONFIG = {
             { id: 'sender_title', label: 'Sender Title', type: 'text' },
         ],
         initialData: {
+            our_ref: 'L1/2026/RC-04',
+            your_ref: 'ACME/CORP/77',
             recipient_name: 'John Doe',
             recipient_title: 'Operations Director',
             recipient_address: '456 Commercial Rd,\nLondon, UK',
             date: 'February 6, 2026',
             subject: 'Project Commencement Notice',
             salutation: 'Dear Mr. Doe',
-            body: 'We are pleased to inform you that we are ready to begin Phase 1 of your project. Our team has finalized the initial research and is moving into the design stage. We look forward to a successful collaboration.',
+            body: 'We are pleased to inform you that we are ready to begin Phase 1 of your project. Our team has finalized the initial research and is moving into the design stage.',
             closing: 'Sincerely',
             sender_name: 'Rachel Cooray',
             sender_title: 'Founder, layer1.studio'
@@ -92,7 +111,7 @@ export const TEMPLATES_CONFIG = {
                     { id: 'amount', label: 'Amount', type: 'text' }
                 ]
             },
-            { id: 'total', label: 'Total Estimate', type: 'text' },
+            { id: 'total', label: 'Total Estimate (Auto)', type: 'text' },
             { id: 'notes', label: 'Notes & Conditions', type: 'textarea' },
         ],
         initialData: {
@@ -103,10 +122,9 @@ export const TEMPLATES_CONFIG = {
             project: { name: 'E-commerce Redesign', timeline: '8-10 Weeks' },
             items: [
                 { description: 'Initial Discovery & Wireframing', amount: '$3,800' },
-                { description: 'Visual Design & Prototyping', amount: '$4,000' },
-                { description: 'Full Stack Development', amount: '$5,000' }
+                { description: 'Visual Design & Prototyping', amount: '$4,000' }
             ],
-            total: '$12,800',
+            total: '$7,800.00',
             notes: 'This estimate is based on the initial requirements discussed.'
         }
     },
@@ -127,7 +145,7 @@ export const TEMPLATES_CONFIG = {
             receiving_party: 'Acme Corp',
             date: 'February 6, 2026',
             term: '3 Years',
-            purpose: 'Evaluation of a potential business relationship related to software development services.',
+            purpose: 'Evaluation of a potential business relationship.',
             state_law: 'United Kingdom'
         }
     },
@@ -151,7 +169,7 @@ export const TEMPLATES_CONFIG = {
             amount_paid: '$500.00',
             payment_method: 'Bank Transfer',
             transaction_id: 'TXN-98234-L1',
-            description: 'Consultation Fee - Q1 strategy session'
+            description: 'Consultation Fee'
         }
     },
     service_letter: {
@@ -172,7 +190,7 @@ export const TEMPLATES_CONFIG = {
             designation: 'Lead UI/UX Designer',
             start_date: 'January 10, 2024',
             end_date: 'February 1, 2026',
-            contributions: 'the successful delivery of our core mobile application and the establishment of our cross-platform design tokens',
+            contributions: 'the successful delivery of our core mobile application',
             performance: 'Excellent',
             current_date: 'February 6, 2026'
         }
@@ -206,7 +224,7 @@ export const TEMPLATES_CONFIG = {
                 { item: 'UI/UX Design System', deadline: 'Week 4' },
                 { item: 'Frontend MVP Development', deadline: 'Week 8' }
             ],
-            out_of_scope: 'Content marketing, print logistics, and third-party API licensing fees.',
+            out_of_scope: 'Content marketing and print logistics.',
             milestones: '50% upon signing, 50% upon final delivery.'
         }
     },
@@ -239,10 +257,8 @@ export const TEMPLATES_CONFIG = {
             reporting_to: 'Chief Technology Officer',
             remuneration: '£85,000 per annum',
             location: 'London / Remote',
-            responsibilities: 'You will lead our AI research initiatives and oversee the integration of LLMs into our core client dashboards.',
-            benefits: 'Private healthcare, 30 days holiday, and annual performance bonus.'
+            responsibilities: 'You will lead our AI research initiatives.',
+            benefits: 'Private healthcare and 30 days holiday.'
         }
     },
 };
-
-export const getTemplateData = (id) => TEMPLATES_CONFIG[id] || TEMPLATES_CONFIG.invoice;

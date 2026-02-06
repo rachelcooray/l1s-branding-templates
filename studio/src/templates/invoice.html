@@ -58,7 +58,7 @@
                 </tr>
                 <tr class="total-row">
                     <td class="label">Tax (VAT)</td>
-                    <td style="text-align: right;">{{tax}}</td>
+                    <td style="text-align: right;">{{tax_amount}}</td>
                 </tr>
                 <tr class="total-row">
                     <td class="label" style="font-size: 14pt;">Total Amount Due</td>
@@ -71,7 +71,12 @@
             <h3 style="font-size: 10pt; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">
                 Payment Instructions</h3>
             <div style="background: var(--slate-100); padding: 20px; border-radius: 8px; font-size: 10pt;">
-                <p style="white-space: pre-line;">{{payment_terms}}</p>
+                <p><strong>Bank:</strong> {{bank.name}}</p>
+                <p><strong>Account Name:</strong> {{bank.account_name}}</p>
+                <p><strong>Sort Code:</strong> {{bank.sort_code}} | <strong>Account:</strong> {{bank.account_number}}
+                </p>
+                <p><strong>IBAN:</strong> {{bank.iban}} | <strong>SWIFT:</strong> {{bank.swift}}</p>
+                <p style="margin-top: 10px; color: var(--text-muted);">{{payment_terms}}</p>
             </div>
         </section>
 
