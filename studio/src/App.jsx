@@ -261,29 +261,20 @@ function App() {
             </div>
           </div>
 
-          <div style={{ flex: 1, position: 'relative', display: 'flex', padding: '40px', overflow: 'auto', backgroundColor: '#000' }}>
-            <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: `radial-gradient(${accentColor} 1px, transparent 1px)`, backgroundSize: '40px 40px', pointerEvents: 'none' }} />
-
-            {/* Scroll Wrapper that matches the scaled size */}
+          <div style={{ flex: 1, position: 'relative', display: 'flex', justifyContent: 'center', padding: '80px', overflow: 'auto', backgroundColor: '#000', scrollbarWidth: 'thin' }}>
+            <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: `radial-gradient(${accentColor} 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
             <div style={{
-              width: `${210 * zoom}mm`,
-              height: `${297 * zoom}mm`,
-              transition: 'width 0.1s ease-out, height 0.1s ease-out',
-              flexShrink: 0,
-              margin: 'auto', // Centers the content if smaller than viewport
-              position: 'relative'
+              position: 'relative',
+              transform: `scale(${zoom})`,
+              transformOrigin: 'top center',
+              transition: 'transform 0.1s ease-out',
+              boxShadow: `0 80px 100px -20px rgba(0,0,0,0.8), 0 0 100px ${accentColor}10`,
+              marginBottom: '200px', // Extra bottom spacing for scaled content
+              width: '210mm',
+              height: '297mm',
+              flexShrink: 0
             }}>
-              {/* Scaled Content - Origin Top Left to fill the wrapper */}
-              <div style={{
-                transform: `scale(${zoom})`,
-                transformOrigin: 'top left',
-                transition: 'transform 0.1s ease-out',
-                boxShadow: `0 80px 100px -20px rgba(0,0,0,0.8), 0 0 100px ${accentColor}10`,
-                width: '210mm',
-                height: '297mm'
-              }}>
-                <iframe className="bg-white" style={{ width: '100%', height: '100%', border: 'none', borderRadius: '4px' }} srcDoc={renderedHtml} />
-              </div>
+              <iframe className="bg-white" style={{ width: '100%', height: '100%', border: 'none', borderRadius: '4px' }} srcDoc={renderedHtml} />
             </div>
           </div>
         </div>
