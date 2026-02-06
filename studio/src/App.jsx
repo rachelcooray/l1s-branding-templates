@@ -37,6 +37,7 @@ function App() {
   const [viewMode, setViewMode] = useState('editor'); // 'editor' or 'design'
   const [accentColor, setAccentColor] = useState('#6366f1');
   const [fontFamily, setFontFamily] = useState('Outfit');
+  const [zoom, setZoom] = useState(0.85); // Default zoom at 85%
   const [toast, setToast] = useState(null);
 
   const config = TEMPLATES_CONFIG[activeId];
@@ -195,6 +196,16 @@ function App() {
           </div>
 
           <div className="flex items-center gap-8">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'rgba(255,255,255,0.05)', padding: '6px 16px', borderRadius: '12px', border: '1px solid var(--border-white)' }}>
+              <span style={{ fontSize: '10px', fontWeight: 900, color: 'var(--text-muted)' }}>ZOOM</span>
+              <input
+                type="range" min="0.3" max="1.5" step="0.05"
+                value={zoom} onChange={(e) => setZoom(parseFloat(e.target.value))}
+                style={{ width: '100px', accentColor: accentColor }}
+              />
+              <span style={{ fontSize: '10px', fontWeight: 900, color: accentColor, width: '30px' }}>{Math.round(zoom * 100)}%</span>
+            </div>
+
             <div className="status-indicator">
               <div className="dot"></div> READY
             </div>
@@ -215,7 +226,7 @@ function App() {
               </p>
             </div>
 
-            <div style={{ flex: 1, overflowY: 'auto', padding: '32px' }}>
+            <div style={{ flex: 1, overflowY: 'auto', padding: '32px', paddingBottom: '100px' }}>
               {viewMode === 'editor' ? (
                 config.fields.map(field => (
                   <div key={field.id} className="field-group">
@@ -236,7 +247,7 @@ function App() {
                             ))}
                           </div>
                         ))}
-                        <button className="btn-ghost w-full" style={{ borderDash: '2px dashed', borderStyle: 'dashed' }} onClick={() => addListItem(field.id, field)}>+ Add Item</button>
+                        <button className="btn-ghost w-full" style={{ borderStyle: 'dashed', borderWidth: '2px' }} onClick={() => addListItem(field.id, field)}>+ Add Item</button>
                       </div>
                     ) : (
                       <input className="input-field" value={_.get(data, field.id) || ''} onChange={(e) => handleFieldChange(field.id, e.target.value)} />
@@ -249,7 +260,7 @@ function App() {
                     <label className="field-label">Accent Color</label>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
                       {ACCENT_COLORS.map(c => (
-                        <button key={c.value} onClick={() => setAccentColor(c.value)} style={{ height: '60px', borderRadius: '12px', background: c.value, border: accentColor === c.value ? '4px solid white' : 'none', cursor: 'pointer' }} />
+                        <button key={c.value} onClick={() => setAccentColor(c.value)} style={{ height: '60px', borderRadius: '12px', background: c.value, border: accentColor === c.value ? '4px solid white' : 'none', cursor: 'pointer', transition: 'all 0.2s' }} />
                       ))}
                     </div>
                   </div>
@@ -265,9 +276,16 @@ function App() {
             </div>
           </div>
 
-          <div style={{ flex: 1, position: 'relative', display: 'flex', justifyContent: 'center', padding: '60px', overflowY: 'auto', backgroundColor: '#000' }}>
+          <div style={{ flex: 1, position: 'relative', display: 'flex', justifyContent: 'center', padding: '100px', overflow: 'auto', backgroundColor: '#000', scrollbarWidth: 'thin' }}>
             <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: `radial-gradient(${accentColor} 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
-            <div style={{ position: 'relative', boxShadow: `0 80px 100px -20px rgba(0,0,0,0.8), 0 0 100px ${accentColor}10` }}>
+            <div style={{
+              position: 'relative',
+              transform: `scale(${zoom})`,
+              transformOrigin: 'top center',
+              transition: 'transform 0.2s cubic-bezier(0.23, 1, 0.32, 1)',
+              boxShadow: `0 80px 100px -20px rgba(0,0,0,0.8), 0 0 100px ${accentColor}10`,
+              marginBottom: `${297 * zoom}mm` // Ensure vertical space for scaled content
+            }}>
               <iframe className="bg-white" style={{ width: '210mm', height: '297mm', border: 'none', borderRadius: '4px' }} srcDoc={renderedHtml} />
             </div>
           </div>
