@@ -35,8 +35,6 @@ export const TEMPLATES_CONFIG = {
             { id: 'bank.account_number', label: 'Account Number', type: 'text' },
             { id: 'bank.iban', label: 'IBAN', type: 'text' },
             { id: 'bank.swift', label: 'SWIFT/BIC', type: 'text' },
-            { id: 'signatory.name', label: 'Authorized Signatory', type: 'text' },
-            { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
             { id: 'payment_terms', label: 'Notes', type: 'textarea' },
         ],
         initialData: {
@@ -61,7 +59,6 @@ export const TEMPLATES_CONFIG = {
                 iban: 'GB82 MONZ 1234 5678 9012 34',
                 swift: 'MONZGB21'
             },
-            signatory: { name: 'Rachel Cooray', title: 'Founder' },
             payment_terms: 'Payment due within 14 days via Bank Transfer.'
         }
     },
@@ -119,8 +116,6 @@ export const TEMPLATES_CONFIG = {
                 ]
             },
             { id: 'total', label: 'Total Estimate (Auto)', type: 'text' },
-            { id: 'signatory.name', label: 'Authorized Signatory', type: 'text' },
-            { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
             { id: 'notes', label: 'Notes & Conditions', type: 'textarea' },
         ],
         initialData: {
@@ -134,7 +129,6 @@ export const TEMPLATES_CONFIG = {
                 { description: 'Visual Design & Prototyping', amount: '$4,000' }
             ],
             total: '$7,800.00',
-            signatory: { name: 'Rachel Cooray', title: 'Founder' },
             notes: 'This estimate is based on the initial requirements discussed.'
         }
     },
@@ -149,10 +143,6 @@ export const TEMPLATES_CONFIG = {
             { id: 'term', label: 'Confidentiality Term', type: 'text' },
             { id: 'purpose', label: 'Purpose of Disclosure', type: 'textarea' },
             { id: 'state_law', label: 'Governing Law', type: 'text' },
-            { id: 'signatory.name', label: 'Our Signatory', type: 'text' },
-            { id: 'signatory.title', label: 'Our Title', type: 'text' },
-            { id: 'client_signatory.name', label: 'Client Signatory', type: 'text' },
-            { id: 'client_signatory.title', label: 'Client Title', type: 'text' },
         ],
         initialData: {
             disclosing_party: 'layer1.studio',
@@ -161,8 +151,6 @@ export const TEMPLATES_CONFIG = {
             term: '3 Years',
             purpose: 'Evaluation of a potential business relationship.',
             state_law: 'United Kingdom',
-            signatory: { name: 'Rachel Cooray', title: 'Founder' },
-            client_signatory: { name: 'John Smith', title: 'Director' }
         }
     },
     receipt: {
@@ -177,7 +165,6 @@ export const TEMPLATES_CONFIG = {
             { id: 'payment_method', label: 'Payment Method', type: 'text' },
             { id: 'transaction_id', label: 'Transaction ID', type: 'text' },
             { id: 'description', label: 'Description', type: 'text' },
-            { id: 'signatory.name', label: 'Issued By', type: 'text' },
         ],
         initialData: {
             receipt_number: 'L1-RCP-2026-003',
@@ -187,7 +174,6 @@ export const TEMPLATES_CONFIG = {
             payment_method: 'Bank Transfer',
             transaction_id: 'TXN-98234-L1',
             description: 'Consultation Fee',
-            signatory: { name: 'Rachel Cooray', title: 'Founder' }
         }
     },
     service_letter: {
@@ -236,8 +222,6 @@ export const TEMPLATES_CONFIG = {
             },
             { id: 'out_of_scope', label: 'Out of Scope', type: 'textarea' },
             { id: 'milestones', label: 'Payment Milestones', type: 'textarea' },
-            { id: 'signatory.name', label: 'Authorized Signatory', type: 'text' },
-            { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
         ],
         initialData: {
             project_name: 'Stellar App Development',
@@ -251,7 +235,6 @@ export const TEMPLATES_CONFIG = {
             ],
             out_of_scope: 'Content marketing and print logistics.',
             milestones: '50% upon signing, 50% upon final delivery.',
-            signatory: { name: 'Rachel Cooray', title: 'Founder' }
         }
     },
     appointment: {
