@@ -36,7 +36,9 @@ body {
   background-color: var(--bg-deep);
   color: var(--text-main);
   font-family: 'Outfit', sans-serif;
-  overflow: hidden;
+  /* Allow scrolling on shorter viewports */
+  overflow-x: hidden;
+  overflow-y: auto;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -45,6 +47,9 @@ body {
   display: flex;
   height: 100vh;
   width: 100vw;
+  /* If the layout doesn't fit, scroll the whole canvas */
+  overflow-x: hidden;
+  overflow-y: auto;
   background-image:
     radial-gradient(circle at 0% 0%, var(--accent-surface) 0%, transparent 40%),
     radial-gradient(circle at 100% 100%, var(--accent-surface) 0%, transparent 40%);

@@ -19,7 +19,7 @@ A collection of professional business document templates for **layer1.studio**.
 ## Features
 
 - **Responsive Design**: Clean and professional layout across all devices.
-- **Brand Consistency**: Unified styling for all business documents.
+- **Brand Consistency**: Unified styling for all business letters and documents.
 - **Ease of Use**: Simple HTML/CSS structure for easy customization.
 
 ### 1. Cloud Automation (GitHub Actions)
