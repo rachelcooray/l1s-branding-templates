@@ -103,21 +103,25 @@ body {
 
 /* Main Dashboard Panels */
 .panel-header {
-  height: 80px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 24px;
   border-bottom: 1px solid var(--border-white);
+  gap: 16px;
+  flex-wrap: wrap;
+  /* Ensure zoom slider wraps if needed */
 }
 
 .editor-panel {
-  width: 480px;
+  width: 440px;
   height: 100%;
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--border-white);
   background: rgba(2, 4, 10, 0.4);
+  flex-shrink: 0;
 }
 
 .field-group {
@@ -151,6 +155,43 @@ body {
   border-color: var(--accent-primary);
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0 10px 30px -10px var(--accent-glow);
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    background: white !important;
+    overflow: visible !important;
+  }
+
+  .studio-container>aside,
+  .studio-container>main>header,
+  .studio-container>main>.flex>.editor-panel,
+  .no-print {
+    display: none !important;
+  }
+
+  .studio-container>main>.flex>div:last-child {
+    background: white !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+    display: block !important;
+    width: 210mm !important;
+    height: 297mm !important;
+  }
+
+  iframe {
+    width: 210mm !important;
+    height: 297mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
 }
 
 textarea.input-field {

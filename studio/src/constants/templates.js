@@ -35,6 +35,8 @@ export const TEMPLATES_CONFIG = {
             { id: 'bank.account_number', label: 'Account Number', type: 'text' },
             { id: 'bank.iban', label: 'IBAN', type: 'text' },
             { id: 'bank.swift', label: 'SWIFT/BIC', type: 'text' },
+            { id: 'signatory.name', label: 'Authorized Signatory', type: 'text' },
+            { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
             { id: 'payment_terms', label: 'Notes', type: 'textarea' },
         ],
         initialData: {
@@ -48,9 +50,9 @@ export const TEMPLATES_CONFIG = {
                 { description: 'Loyalty Discount', amount: '-$500' }
             ],
             tax: '20',
-            subtotal: '$5,700.00',
-            tax_amount: '$1,140.00',
-            total: '$6,840.00',
+            subtotal: '$5,200.00',
+            tax_amount: '$1,040.00',
+            total: '$6,240.00',
             bank: {
                 name: 'Monzo Bank',
                 account_name: 'LAYER1 STUDIO LTD',
@@ -59,6 +61,7 @@ export const TEMPLATES_CONFIG = {
                 iban: 'GB82 MONZ 1234 5678 9012 34',
                 swift: 'MONZGB21'
             },
+            signatory: { name: 'Rachel Cooray', title: 'Founder' },
             payment_terms: 'Payment due within 14 days via Bank Transfer.'
         }
     },
@@ -79,6 +82,8 @@ export const TEMPLATES_CONFIG = {
             { id: 'closing', label: 'Closing', type: 'text' },
             { id: 'sender_name', label: 'Sender Name', type: 'text' },
             { id: 'sender_title', label: 'Sender Title', type: 'text' },
+            { id: 'signatory.name', label: 'Signatory Name', type: 'text' },
+            { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
         ],
         initialData: {
             our_ref: 'L1/2026/RC-04',
@@ -92,7 +97,8 @@ export const TEMPLATES_CONFIG = {
             body: 'We are pleased to inform you that we are ready to begin Phase 1 of your project. Our team has finalized the initial research and is moving into the design stage.',
             closing: 'Sincerely',
             sender_name: 'Rachel Cooray',
-            sender_title: 'Founder, layer1.studio'
+            sender_title: 'Founder, layer1.studio',
+            signatory: { name: 'Rachel Cooray', title: 'Founder' }
         }
     },
     quote: {
@@ -113,6 +119,8 @@ export const TEMPLATES_CONFIG = {
                 ]
             },
             { id: 'total', label: 'Total Estimate (Auto)', type: 'text' },
+            { id: 'signatory.name', label: 'Authorized Signatory', type: 'text' },
+            { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
             { id: 'notes', label: 'Notes & Conditions', type: 'textarea' },
         ],
         initialData: {
@@ -126,6 +134,7 @@ export const TEMPLATES_CONFIG = {
                 { description: 'Visual Design & Prototyping', amount: '$4,000' }
             ],
             total: '$7,800.00',
+            signatory: { name: 'Rachel Cooray', title: 'Founder' },
             notes: 'This estimate is based on the initial requirements discussed.'
         }
     },
@@ -140,6 +149,10 @@ export const TEMPLATES_CONFIG = {
             { id: 'term', label: 'Confidentiality Term', type: 'text' },
             { id: 'purpose', label: 'Purpose of Disclosure', type: 'textarea' },
             { id: 'state_law', label: 'Governing Law', type: 'text' },
+            { id: 'signatory.name', label: 'Our Signatory', type: 'text' },
+            { id: 'signatory.title', label: 'Our Title', type: 'text' },
+            { id: 'client_signatory.name', label: 'Client Signatory', type: 'text' },
+            { id: 'client_signatory.title', label: 'Client Title', type: 'text' },
         ],
         initialData: {
             disclosing_party: 'layer1.studio',
@@ -147,7 +160,9 @@ export const TEMPLATES_CONFIG = {
             date: 'February 6, 2026',
             term: '3 Years',
             purpose: 'Evaluation of a potential business relationship.',
-            state_law: 'United Kingdom'
+            state_law: 'United Kingdom',
+            signatory: { name: 'Rachel Cooray', title: 'Founder' },
+            client_signatory: { name: 'John Smith', title: 'Director' }
         }
     },
     receipt: {
@@ -162,6 +177,7 @@ export const TEMPLATES_CONFIG = {
             { id: 'payment_method', label: 'Payment Method', type: 'text' },
             { id: 'transaction_id', label: 'Transaction ID', type: 'text' },
             { id: 'description', label: 'Description', type: 'text' },
+            { id: 'signatory.name', label: 'Issued By', type: 'text' },
         ],
         initialData: {
             receipt_number: 'L1-RCP-2026-003',
@@ -170,7 +186,8 @@ export const TEMPLATES_CONFIG = {
             amount_paid: '$500.00',
             payment_method: 'Bank Transfer',
             transaction_id: 'TXN-98234-L1',
-            description: 'Consultation Fee'
+            description: 'Consultation Fee',
+            signatory: { name: 'Rachel Cooray', title: 'Founder' }
         }
     },
     service_letter: {
@@ -179,21 +196,26 @@ export const TEMPLATES_CONFIG = {
         css: stylesCss,
         fields: [
             { id: 'employee_name', label: 'Employee Name', type: 'text' },
+            { id: 'pronoun', label: 'Pronoun (His/Her/Their)', type: 'text' },
             { id: 'designation', label: 'Designation', type: 'text' },
             { id: 'start_date', label: 'Employment Start', type: 'text' },
             { id: 'end_date', label: 'Employment End', type: 'text' },
             { id: 'contributions', label: 'Major Contributions', type: 'textarea' },
             { id: 'performance', label: 'Performance Summary', type: 'text' },
             { id: 'current_date', label: 'Issue Date', type: 'text' },
+            { id: 'signatory.name', label: 'Authorized Signatory', type: 'text' },
+            { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
         ],
         initialData: {
             employee_name: 'Alex Rivera',
+            pronoun: 'Their',
             designation: 'Lead UI/UX Designer',
             start_date: 'January 10, 2024',
             end_date: 'February 1, 2026',
             contributions: 'the successful delivery of our core mobile application',
             performance: 'Excellent',
-            current_date: 'February 6, 2026'
+            current_date: 'February 6, 2026',
+            signatory: { name: 'Rachel Cooray', title: 'Founder' }
         }
     },
     sow: {
@@ -214,6 +236,8 @@ export const TEMPLATES_CONFIG = {
             },
             { id: 'out_of_scope', label: 'Out of Scope', type: 'textarea' },
             { id: 'milestones', label: 'Payment Milestones', type: 'textarea' },
+            { id: 'signatory.name', label: 'Authorized Signatory', type: 'text' },
+            { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
         ],
         initialData: {
             project_name: 'Stellar App Development',
@@ -226,7 +250,8 @@ export const TEMPLATES_CONFIG = {
                 { item: 'Frontend MVP Development', deadline: 'Week 8' }
             ],
             out_of_scope: 'Content marketing and print logistics.',
-            milestones: '50% upon signing, 50% upon final delivery.'
+            milestones: '50% upon signing, 50% upon final delivery.',
+            signatory: { name: 'Rachel Cooray', title: 'Founder' }
         }
     },
     appointment: {
@@ -247,6 +272,8 @@ export const TEMPLATES_CONFIG = {
             { id: 'location', label: 'Location', type: 'text' },
             { id: 'responsibilities', label: 'Job Summary', type: 'textarea' },
             { id: 'benefits', label: 'Benefits', type: 'textarea' },
+            { id: 'signatory.name', label: 'Authorized Signatory', type: 'text' },
+            { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
         ],
         initialData: {
             candidate: { name: 'Sarah Parker', email: 'sarah.p@example.com', address: '789 Oak Lane, London' },
@@ -259,7 +286,8 @@ export const TEMPLATES_CONFIG = {
             remuneration: '£85,000 per annum',
             location: 'London / Remote',
             responsibilities: 'You will lead our AI research initiatives.',
-            benefits: 'Private healthcare and 30 days holiday.'
+            benefits: 'Private healthcare and 30 days holiday.',
+            signatory: { name: 'Rachel Cooray', title: 'Founder' }
         }
     },
 };

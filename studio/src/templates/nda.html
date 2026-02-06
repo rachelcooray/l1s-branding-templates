@@ -44,12 +44,19 @@
 
         <section class="signatures" style="margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
             <div>
-                <p style="border-bottom: 1px solid #000; height: 40px;"></p>
-                <p style="margin-top: 10px;">For {{disclosing_party}}</p>
+                <div style="height: 40px; display: flex; align-items: flex-end; border-bottom: 1px solid #000;">
+                    <span
+                        style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 14pt; color: var(--primary);">{{signatory.name}}</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 9pt;"><strong>{{signatory.name}}</strong><br>{{signatory.title}}
+                </p>
+                <p style="font-size: 8pt; color: var(--text-muted); margin-top: 5px;">For {{disclosing_party}}</p>
             </div>
             <div>
                 <p style="border-bottom: 1px solid #000; height: 40px;"></p>
-                <p style="margin-top: 10px;">For {{receiving_party}}</p>
+                <p style="margin-top: 10px; font-size: 9pt;">
+                    <strong>{{client_signatory.name}}</strong><br>{{client_signatory.title}}</p>
+                <p style="font-size: 8pt; color: var(--text-muted); margin-top: 5px;">For {{receiving_party}}</p>
             </div>
         </section>
 

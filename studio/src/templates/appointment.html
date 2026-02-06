@@ -79,11 +79,15 @@
             <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
                 <div>
                     <p style="border-bottom: 1px solid #000; height: 40px;"></p>
-                    <p style="margin-top: 10px;">{{candidate.name}} (Candidate)</p>
+                    <p style="margin-top: 10px; font-size: 9pt;"><strong>{{candidate.name}}</strong><br>Candidate</p>
                 </div>
                 <div>
-                    <p style="border-bottom: 1px solid #000; height: 40px;"></p>
-                    <p style="margin-top: 10px;">Authorised Signatory</p>
+                    <div style="height: 40px; display: flex; align-items: flex-end; border-bottom: 1px solid #000;">
+                        <span
+                            style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 16pt; color: var(--primary); margin-bottom: 5px;">{{signatory.name}}</span>
+                    </div>
+                    <p style="margin-top: 10px; font-size: 9pt;">
+                        <strong>{{signatory.name}}</strong><br>{{signatory.title}}</p>
                 </div>
             </div>
         </section>

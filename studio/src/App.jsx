@@ -34,10 +34,10 @@ function App() {
   const [activeId, setActiveId] = useState('invoice');
   const [data, setData] = useState(TEMPLATES_CONFIG.invoice.initialData);
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [viewMode, setViewMode] = useState('editor'); // 'editor' or 'design'
+  const [viewMode, setViewMode] = useState('editor');
   const [accentColor, setAccentColor] = useState('#6366f1');
   const [fontFamily, setFontFamily] = useState('Outfit');
-  const [zoom, setZoom] = useState(0.85); // Default zoom at 85%
+  const [zoom, setZoom] = useState(0.65); // Default zoom at 65% for better visibility
   const [toast, setToast] = useState(null);
 
   const config = TEMPLATES_CONFIG[activeId];
@@ -53,7 +53,6 @@ function App() {
 
   const calculateTotals = (currentData) => {
     if (!currentData.items || !Array.isArray(currentData.items)) return currentData;
-
     const subtotal = currentData.items.reduce((sum, item) => {
       const rawAmount = String(item.amount || '0');
       const isNegative = rawAmount.includes('-') || rawAmount.toLowerCase().includes('discount');
@@ -61,14 +60,11 @@ function App() {
       const amount = isNegative ? -numericPart : numericPart;
       return sum + amount;
     }, 0);
-
     const taxPercent = parseFloat(String(currentData.tax).replace(/[^0-9.]/g, '')) || 0;
     const taxAmount = (subtotal * taxPercent) / 100;
     const total = subtotal + taxAmount;
-
     const firstAmount = currentData.items[0]?.amount || '$';
     const symbol = firstAmount.match(/[^0-9.]/)?.[0] || '$';
-
     const newData = _.cloneDeep(currentData);
     newData.subtotal = `${symbol}${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
     newData.total = `${symbol}${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
@@ -96,7 +92,7 @@ function App() {
     _.set(newData, path, list);
     newData = calculateTotals(newData);
     setData(newData);
-    showToast(`Added new ${fieldConfig.label.slice(0, -2)}`);
+    showToast(`Added ${fieldConfig.label.toLowerCase().slice(0, -2)}`);
   };
 
   const removeListItem = (path, index) => {
@@ -113,7 +109,9 @@ function App() {
     let html = config.html;
     const brandingStyles = `
       :root { --primary: ${accentColor}; --font-main: '${fontFamily}', sans-serif; }
-      .page { font-family: var(--font-main); }
+      @page { size: A4; margin: 0; }
+      body { margin: 0; padding: 0; width: 210mm; min-height: 297mm; overflow-x: hidden; }
+      .page { width: 210mm; min-height: 297mm; margin: 0; box-shadow: none; overflow: hidden; }
       .badge { background: var(--primary) !important; }
       .footer-accent { background: var(--primary) !important; }
     `;
@@ -153,7 +151,7 @@ function App() {
       <AnimatePresence>
         {toast && (
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 20, opacity: 0 }}
-            style={{ position: 'fixed', bottom: '40px', left: '50%', transform: 'translateX(-50%)', zIndex: 100, display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 24px', borderRadius: '16px', background: 'rgba(13, 17, 23, 0.9)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 40px rgba(0,0,0,0.4)', color: 'white', fontSize: '14px', fontWeight: 'bold' }}>
+            style={{ position: 'fixed', bottom: '40px', left: '50%', transform: 'translateX(-50%)', zIndex: 1000, display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 24px', borderRadius: '16px', background: 'rgba(13, 17, 23, 0.95)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 40px rgba(0,0,0,0.6)', color: 'white', fontSize: '14px', fontWeight: 'bold' }}>
             <CheckCircle size={18} color="#10b981" /> {toast}
           </motion.div>
         )}
@@ -161,13 +159,13 @@ function App() {
 
       <aside className={`sidebar glass flex flex-col p-8 ${sidebarOpen ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '48px', overflow: 'hidden' }}>
-          <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: `linear-gradient(135deg, ${accentColor}, #000)`, display: 'flex', alignItems: 'center', justifyCenter: 'center', flexShrink: 0, boxShadow: `0 10px 20px ${accentColor}40` }}>
-            <span style={{ margin: 'auto', fontWeight: 900, color: 'white', fontSize: '20px' }}>L1</span>
+          <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: `linear-gradient(135deg, ${accentColor}, #000)`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: `0 10px 20px ${accentColor}40` }}>
+            <span style={{ fontWeight: 900, color: 'white', fontSize: '20px' }}>L1</span>
           </div>
           {sidebarOpen && (
             <div>
-              <h1 style={{ fontSize: '20px', fontWeight: 900, letterSpacing: '-0.02em' }}>layer1.studio</h1>
-              <p style={{ fontSize: '10px', fontWeight: 900, color: accentColor, textTransform: 'uppercase', letterSpacing: '0.2em' }}>Branding Studio</p>
+              <h1 style={{ fontSize: '18px', fontWeight: 900, letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>layer1.studio</h1>
+              <p style={{ fontSize: '9px', fontWeight: 900, color: accentColor, textTransform: 'uppercase', letterSpacing: '0.2em' }}>Branding Studio</p>
             </div>
           )}
         </div>
@@ -175,48 +173,48 @@ function App() {
         <nav style={{ flex: 1, overflowY: 'auto' }}>
           {TEMPLATE_LIST.map((tmpl) => (
             <button key={tmpl.id} onClick={() => setActiveId(tmpl.id)} className={`nav-item ${activeId === tmpl.id ? 'active' : ''}`}>
-              <tmpl.icon size={20} style={{ color: activeId === tmpl.id ? accentColor : undefined }} />
+              <tmpl.icon size={18} style={{ color: activeId === tmpl.id ? accentColor : undefined }} />
               {sidebarOpen && <span>{tmpl.name}</span>}
             </button>
           ))}
         </nav>
 
-        <button onClick={() => setSidebarOpen(!sidebarOpen)} className="btn-ghost w-full flex items-center justify-center mt-6">
+        <button onClick={() => setSidebarOpen(!sidebarOpen)} className="btn-ghost" style={{ marginTop: '24px', padding: '12px' }}>
           {sidebarOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </aside>
 
-      <main className="h-full flex flex-col" style={{ flex: 1, position: 'relative' }}>
-        <header className="panel-header glass">
-          <div className="flex items-center gap-4">
+      <main className="h-full flex flex-col" style={{ flex: 1, position: 'relative', minWidth: 0 }}>
+        <header className="panel-header glass" style={{ flexWrap: 'nowrap', overflowX: 'auto', gap: '24px' }}>
+          <div className="flex items-center gap-4 shrink-0">
             <div style={{ display: 'flex', background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '12px', border: '1px solid var(--border-white)' }}>
-              <button onClick={() => setViewMode('editor')} className={`btn-ghost ${viewMode === 'editor' ? 'active' : ''}`} style={{ background: viewMode === 'editor' ? accentColor : 'transparent', color: viewMode === 'editor' ? 'white' : undefined, border: 'none' }}>Editor</button>
-              <button onClick={() => setViewMode('design')} className={`btn-ghost ${viewMode === 'design' ? 'active' : ''}`} style={{ background: viewMode === 'design' ? accentColor : 'transparent', color: viewMode === 'design' ? 'white' : undefined, border: 'none' }}>Design</button>
+              <button onClick={() => setViewMode('editor')} className={`btn-ghost ${viewMode === 'editor' ? 'active' : ''}`} style={{ background: viewMode === 'editor' ? accentColor : 'transparent', color: viewMode === 'editor' ? 'white' : undefined, border: 'none', padding: '8px 16px' }}>Editor</button>
+              <button onClick={() => setViewMode('design')} className={`btn-ghost ${viewMode === 'design' ? 'active' : ''}`} style={{ background: viewMode === 'design' ? accentColor : 'transparent', color: viewMode === 'design' ? 'white' : undefined, border: 'none', padding: '8px 16px' }}>Design</button>
             </div>
           </div>
 
-          <div className="flex items-center gap-8">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'rgba(255,255,255,0.05)', padding: '6px 16px', borderRadius: '12px', border: '1px solid var(--border-white)' }}>
-              <span style={{ fontSize: '10px', fontWeight: 900, color: 'var(--text-muted)' }}>ZOOM</span>
+          <div className="flex items-center gap-6" style={{ marginLeft: 'auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'rgba(255,255,255,0.05)', padding: '6px 12px', borderRadius: '10px', border: '1px solid var(--border-white)', flexShrink: 0 }}>
+              <span style={{ fontSize: '9px', fontWeight: 900, color: 'var(--text-muted)' }}>ZOOM</span>
               <input
                 type="range" min="0.3" max="1.5" step="0.05"
                 value={zoom} onChange={(e) => setZoom(parseFloat(e.target.value))}
-                style={{ width: '100px', accentColor: accentColor }}
+                style={{ width: '80px', accentColor: accentColor, cursor: 'pointer' }}
               />
-              <span style={{ fontSize: '10px', fontWeight: 900, color: accentColor, width: '30px' }}>{Math.round(zoom * 100)}%</span>
+              <span style={{ fontSize: '10px', fontWeight: 900, color: accentColor, width: '35px', textAlign: 'right' }}>{Math.round(zoom * 100)}%</span>
             </div>
 
-            <div className="status-indicator">
+            <div className="status-indicator shrink-0">
               <div className="dot"></div> READY
             </div>
-            <button onClick={() => window.print()} className="btn-primary">
-              <Download size={18} /> Export PDF
+            <button onClick={() => window.print()} className="btn-primary shrink-0" style={{ padding: '10px 20px' }}>
+              <Download size={16} /> <span style={{ fontSize: '12px' }}>Export PDF</span>
             </button>
           </div>
         </header>
 
         <div className="flex h-full overflow-hidden">
-          <div className="editor-panel glass">
+          <div className="editor-panel glass" style={{ width: sidebarOpen ? '440px' : '500px' }}>
             <div className="p-8" style={{ borderBottom: '1px solid var(--border-white)', background: 'rgba(255,255,255,0.01)' }}>
               <h2 style={{ fontSize: '11px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: accentColor }}>
                 {viewMode === 'editor' ? 'Document Content' : 'Branding Settings'}
@@ -226,7 +224,7 @@ function App() {
               </p>
             </div>
 
-            <div style={{ flex: 1, overflowY: 'auto', padding: '32px', paddingBottom: '100px' }}>
+            <div style={{ flex: 1, overflowY: 'auto', padding: '32px', paddingBottom: '120px' }}>
               {viewMode === 'editor' ? (
                 config.fields.map(field => (
                   <div key={field.id} className="field-group">
@@ -234,12 +232,12 @@ function App() {
                     {field.type === 'textarea' ? (
                       <textarea className="input-field" value={_.get(data, field.id) || ''} onChange={(e) => handleFieldChange(field.id, e.target.value)} />
                     ) : field.type === 'list' ? (
-                      <div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                         {_.get(data, field.id, []).map((item, idx) => (
                           <div key={idx} className="list-card">
                             <button className="btn-delete" onClick={() => removeListItem(field.id, idx)}><Trash2 size={14} /></button>
                             {field.fields.map(sub => (
-                              <input key={sub.id} className="input-field" style={{ border: 'none', borderBottom: '1px solid var(--border-white)', borderRadius: 0, padding: '8px 0', marginBottom: '8px' }} placeholder={sub.label} value={item[sub.id]} onChange={(e) => {
+                              <input key={sub.id} className="input-field" style={{ border: 'none', borderBottom: '1px solid var(--border-white)', borderRadius: 0, padding: '10px 0', marginBottom: '4px', background: 'transparent' }} placeholder={sub.label} value={item[sub.id]} onChange={(e) => {
                                 const list = [...data[field.id]];
                                 list[idx][sub.id] = e.target.value;
                                 handleFieldChange(field.id, list);
@@ -247,7 +245,7 @@ function App() {
                             ))}
                           </div>
                         ))}
-                        <button className="btn-ghost w-full" style={{ borderStyle: 'dashed', borderWidth: '2px' }} onClick={() => addListItem(field.id, field)}>+ Add Item</button>
+                        <button className="btn-ghost w-full" style={{ borderStyle: 'dashed', borderWidth: '2px', padding: '12px' }} onClick={() => addListItem(field.id, field)}>+ Add Item</button>
                       </div>
                     ) : (
                       <input className="input-field" value={_.get(data, field.id) || ''} onChange={(e) => handleFieldChange(field.id, e.target.value)} />
@@ -276,17 +274,20 @@ function App() {
             </div>
           </div>
 
-          <div style={{ flex: 1, position: 'relative', display: 'flex', justifyContent: 'center', padding: '100px', overflow: 'auto', backgroundColor: '#000', scrollbarWidth: 'thin' }}>
+          <div style={{ flex: 1, position: 'relative', display: 'flex', justifyContent: 'center', padding: '80px', overflow: 'auto', backgroundColor: '#000', scrollbarWidth: 'thin' }}>
             <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: `radial-gradient(${accentColor} 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
             <div style={{
               position: 'relative',
               transform: `scale(${zoom})`,
               transformOrigin: 'top center',
-              transition: 'transform 0.2s cubic-bezier(0.23, 1, 0.32, 1)',
+              transition: 'transform 0.1s ease-out',
               boxShadow: `0 80px 100px -20px rgba(0,0,0,0.8), 0 0 100px ${accentColor}10`,
-              marginBottom: `${297 * zoom}mm` // Ensure vertical space for scaled content
+              marginBottom: '200px', // Extra bottom spacing for scaled content
+              width: '210mm',
+              height: '297mm',
+              flexShrink: 0
             }}>
-              <iframe className="bg-white" style={{ width: '210mm', height: '297mm', border: 'none', borderRadius: '4px' }} srcDoc={renderedHtml} />
+              <iframe className="bg-white" style={{ width: '100%', height: '100%', border: 'none', borderRadius: '4px' }} srcDoc={renderedHtml} />
             </div>
           </div>
         </div>

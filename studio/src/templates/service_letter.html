@@ -26,24 +26,29 @@
             <p style="font-size: 14pt; font-family: var(--font-serif); font-style: italic; margin-bottom: 30px;">To Whom
                 It May Concern</p>
 
-            <div style="line-height: 2; font-size: 12pt; text-align: justify; margin: 0 40px;">
+            <div style="line-height: 2; font-size: 11pt; text-align: justify; margin: 0 40px;">
                 This is to certify that <strong>{{employee_name}}</strong> has been employed by layer1.studio in the
-                capacity of
-                <strong>{{designation}}</strong> from <strong>{{start_date}}</strong> to <strong>{{end_date}}</strong>.
+                capacity of <strong>{{designation}}</strong> from <strong>{{start_date}}</strong> to
+                <strong>{{end_date}}</strong>.
                 <br><br>
-                During their tenure, Alex was responsible for {{contributions}}. Their performance was rated as
-                <strong>{{performance}}</strong>.
+                During {{pronoun}} tenure, {{employee_name}} was responsible for {{contributions}}. {{pronoun}}
+                performance was rated as <strong>{{performance}}</strong>.
                 <br><br>
-                We found {{employee_name}} to be a dedicated, hardworking, and innovative professional. We wish them
-                the very best in their future endeavors.
+                We found {{employee_name}} to be a dedicated, hardworking, and innovative professional. We wish
+                {{pronoun}} the very best in {{pronoun}} future endeavors.
             </div>
         </section>
 
-        <section class="cert-signature" style="margin-top: 100px; text-align: center;">
-            <p style="border-bottom: 1px solid #000; width: 200px; margin: 0 auto; min-height: 40px;"></p>
-            <p style="margin-top: 10px;"><strong>Rachel Cooray</strong></p>
-            <p style="font-size: 10pt; color: var(--text-muted);">Founder, layer1.studio</p>
-            <p style="font-size: 9pt; color: var(--text-muted); margin-top: 20px;">Issued on: {{current_date}}</p>
+        <section class="cert-signature" style="margin-top: 80px; text-align: center;">
+            <div
+                style="height: 60px; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 5px;">
+                <span
+                    style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 20pt; color: var(--primary);">{{signatory.name}}</span>
+            </div>
+            <p style="border-bottom: 2px solid var(--slate-200); width: 220px; margin: 0 auto;"></p>
+            <p style="margin-top: 10px;"><strong>{{signatory.name}}</strong></p>
+            <p style="font-size: 10pt; color: var(--text-muted);">{{signatory.title}}, layer1.studio</p>
+            <p style="font-size: 9pt; color: var(--text-muted); margin-top: 15px;">Issued on: {{current_date}}</p>
         </section>
 
         <div class="footer-accent"></div>
