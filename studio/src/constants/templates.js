@@ -77,8 +77,6 @@ export const TEMPLATES_CONFIG = {
             { id: 'salutation', label: 'Salutation', type: 'text' },
             { id: 'body', label: 'Letter Body', type: 'textarea' },
             { id: 'closing', label: 'Closing', type: 'text' },
-            { id: 'sender_name', label: 'Sender Name', type: 'text' },
-            { id: 'sender_title', label: 'Sender Title', type: 'text' },
             { id: 'signatory.name', label: 'Signatory Name', type: 'text' },
             { id: 'signatory.title', label: 'Signatory Title', type: 'text' },
         ],

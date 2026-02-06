@@ -46,9 +46,14 @@
 
         <section class="letter-closing" style="margin-top: 50px;">
             <p>{{closing}},</p>
-            <div style="margin-top: 40px;">
-                <p><strong>{{sender_name}}</strong></p>
-                <p>{{sender_title}}</p>
+            <div style="margin-top: 40px; width: 220px;">
+                <div
+                    style="height: 40px; display: flex; align-items: flex-end; border-bottom: 2px solid var(--slate-100);">
+                    <span
+                        style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 14pt; color: var(--primary);">{{signatory.name}}</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 10pt;"><strong>{{signatory.name}}</strong></p>
+                <p style="font-size: 9pt; color: var(--text-muted);">{{signatory.title}}</p>
             </div>
         </section>
 
