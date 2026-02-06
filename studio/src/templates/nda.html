@@ -9,78 +9,54 @@
 </head>
 
 <body>
-    <div class="page">
+    <div class="page text-doc">
         <header class="header">
             <div class="logo-section">
                 <img src="../l1s-logo.png" alt="layer1 studio logo">
-                <div class="badge" style="background: #0a0c10;">NDA</div>
+                <div class="badge">Non-Disclosure Agreement</div>
             </div>
             <div class="studio-info">
                 <h1>layer1.studio</h1>
-                <p>Confidential Document</p>
+                <p>London • Colombo</p>
+                <p>studio.layer1@gmail.com</p>
             </div>
         </header>
 
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2
-                style="font-size: 20pt; text-transform: uppercase; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 10px;">
-                Non-Disclosure Agreement</h2>
-        </div>
-
-        <main class="content" style="font-size: 9.5pt; line-height: 1.5;">
-            <p style="margin-bottom: 15px;">
-                This Non-Disclosure Agreement (the "Agreement") is entered into on this {{entry_date}}, by
-                and between:
-            </p>
-
-            <p style="margin-bottom: 15px;">
-                <strong>layer1.studio</strong>, with business operations in London and Colombo ("Disclosing Party"), and
-                <strong>{{counterparty.name}}</strong>, located at {{counterparty.address}} ("Receiving Party").
-            </p>
-
-            <h3 style="font-size: 10pt; margin-top: 20px; text-transform: uppercase;">1. Definition of Confidential
-                Information</h3>
-            <p style="margin-bottom: 10px;">
-                Confidential Information refers to any data or information that is proprietary to the Disclosing Party
-                and not generally known to the public, including but not limited to business plans, product roadmaps,
-                source code, design files, and client lists.
-            </p>
-
-            <h3 style="font-size: 10pt; margin-top: 20px; text-transform: uppercase;">2. Obligations of Receiving Party
-            </h3>
-            <p style="margin-bottom: 10px;">
-                The Receiving Party shall hold and maintain the Confidential Information in strictest confidence for the
-                sole and exclusive benefit of the Disclosing Party. The Receiving Party shall carefully restrict access
-                to Confidential Information to employees and contractors who need it to perform their duties.
-            </p>
-
-            <h3 style="font-size: 10pt; margin-top: 20px; text-transform: uppercase;">3. Period of Agreement</h3>
-            <p style="margin-bottom: 10px;">
-                The nondisclosure provisions of this Agreement shall survive the termination of this Agreement and the
-                Receiving Party's duty to hold Confidential Information in confidence shall remain in effect until the
-                Confidential Information no longer qualifies as a trade secret.
-            </p>
-
-            <div style="display: flex; gap: 50px; margin-top: 60px;">
-                <div style="flex: 1;">
-                    <p><strong>Disclosing Party</strong></p>
-                    <div style="height: 40px; border-bottom: 1px solid #000; margin-bottom: 5px;"></div>
-                    <p>Signature</p>
-                    <p style="margin-top: 10px;">Name: {{disclosing_party_signatory}}</p>
-                </div>
-                <div style="flex: 1;">
-                    <p><strong>Receiving Party</strong></p>
-                    <div style="height: 40px; border-bottom: 1px solid #000; margin-bottom: 5px;"></div>
-                    <p>Signature</p>
-                    <p style="margin-top: 10px;">Name: {{receiving_party_signatory}}</p>
-                </div>
+        <section class="nda-intro" style="margin-bottom: 30px;">
+            <p><strong>This Non-Disclosure Agreement (the "Agreement") is entered into on {{date}} by and
+                    between:</strong></p>
+            <div style="margin: 20px 0;">
+                <p><strong>Disclosing Party:</strong> {{disclosing_party}}</p>
+                <p><strong>Receiving Party:</strong> {{receiving_party}}</p>
             </div>
-        </main>
+        </section>
+
+        <section class="nda-content" style="font-size: 10pt; line-height: 1.5; color: var(--text-main);">
+            <p style="margin-bottom: 15px;"><strong>1. Purpose:</strong> The parties wish to explore a business
+                opportunity related to: <em>{{purpose}}</em>.</p>
+            <p style="margin-bottom: 15px;"><strong>2. Confidential Information:</strong> Includes all data, designs,
+                and business strategies disclosed by {{disclosing_party}}.</p>
+            <p style="margin-bottom: 15px;"><strong>3. Term:</strong> This agreement shall remain in effect for a period
+                of <strong>{{term}}</strong> from the Effective Date.</p>
+            <p style="margin-bottom: 15px;"><strong>4. Governing Law:</strong> This agreement shall be governed by the
+                laws of {{state_law}}.</p>
+        </section>
+
+        <section class="signatures" style="margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div>
+                <p style="border-bottom: 1px solid #000; height: 40px;"></p>
+                <p style="margin-top: 10px;">For {{disclosing_party}}</p>
+            </div>
+            <div>
+                <p style="border-bottom: 1px solid #000; height: 40px;"></p>
+                <p style="margin-top: 10px;">For {{receiving_party}}</p>
+            </div>
+        </section>
 
         <div class="footer-accent"></div>
         <footer class="footer-content">
             <p>layer1.studio</p>
-            <p>Direct Inquiries: studio.layer1@gmail.com</p>
+            <p>NDA Agreement</p>
             <p>© 2026 layer1.studio</p>
         </footer>
     </div>

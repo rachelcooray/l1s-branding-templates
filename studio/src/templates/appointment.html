@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>layer1.studio - Letter of Appointment</title>
+    <title>layer1.studio - Employment Offer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="page">
+    <div class="page text-doc">
         <header class="header">
             <div class="logo-section">
                 <img src="../l1s-logo.png" alt="layer1 studio logo">
@@ -18,77 +18,80 @@
             <div class="studio-info">
                 <h1>layer1.studio</h1>
                 <p>London • Colombo</p>
+                <p>studio.layer1@gmail.com</p>
+                <p>Ref: {{reference}}</p>
             </div>
         </header>
 
-        <section class="doc-meta">
-            <div class="client-info">
-                <h3>Strictly Confidential</h3>
+        <section class="offer-intro" style="margin-bottom: 30px;">
+            <p>{{date}}</p>
+            <div style="margin-top: 20px;">
                 <p><strong>{{candidate.name}}</strong></p>
+                <p style="white-space: pre-line;">{{candidate.address}}</p>
                 <p>{{candidate.email}}</p>
-                <p>Date: {{date}}</p>
-            </div>
-            <div class="doc-info" style="text-align: right;">
-                <h3>Position</h3>
-                <p class="serif-accent">{{position}}</p>
-                <h3 style="margin-top: 15px;">Reference</h3>
-                <p>{{reference}}</p>
             </div>
         </section>
 
-        <main class="content" style="font-size: 10.5pt; line-height: 1.6;">
-            <p style="margin-bottom: 20px;">Dear {{candidate.name}},</p>
-
-            <p style="margin-bottom: 15px;">
-                Following our recent discussions, we are delighted to offer you a position at <span
-                    style="font-weight: 600; color: var(--primary);">layer1 studio</span>. We believe your expertise
-                will be invaluable to our design and engineering collective.
+        <section class="offer-subject" style="margin-bottom: 30px;">
+            <p
+                style="font-size: 14pt; font-family: var(--font-serif); font-weight: 700; border-bottom: 1px solid var(--slate-200); padding-bottom: 10px;">
+                Subject: Offer of Employment - {{position}}
             </p>
+        </section>
 
-            <h3 style="font-size: 11pt; margin-bottom: 10px; color: var(--text-main);">1. Key Terms of Appointment</h3>
-            <ul style="margin-bottom: 20px; padding-left: 20px;">
-                <li><strong>Start Date:</strong> {{start_date}}</li>
-                <li><strong>Reporting To:</strong> {{reporting_to}}</li>
-                <li><strong>Remuneration:</strong> {{remuneration}} per annum, payable monthly.</li>
-                <li><strong>Location:</strong> {{location}}</li>
-            </ul>
+        <section class="offer-content" style="font-size: 10.5pt; line-height: 1.6;">
+            <p style="margin-bottom: 15px;">We are delighted to offer you the position of <strong>{{position}}</strong>
+                with layer1.studio. We believe your skills and experience will be a great asset to our team.</p>
 
-            <h3 style="font-size: 11pt; margin-bottom: 10px; color: var(--text-main);">2. Responsibilities</h3>
-            <p style="margin-bottom: 20px;">
-                {{responsibilities}}
-            </p>
-
-            <h3 style="font-size: 11pt; margin-bottom: 10px; color: var(--text-main);">3. Confidentiality</h3>
-            <p style="margin-bottom: 20px;">
-                As part of your role, you will have access to sensitive information. You will be required to sign a
-                separate Non-Disclosure Agreement (NDA) as part of your onboarding.
-            </p>
-
-            <p style="margin-bottom: 40px;">
-                Please sign and return the duplicate copy of this letter to signify your acceptance of this offer. We
-                look forward to having you on the team!
-            </p>
-
-            <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+            <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: var(--slate-100); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
                 <div>
-                    <p>For <strong>layer1 studio</strong></p>
-                    <div style="height: 50px;"></div>
-                    <p>____________________</p>
-                    <p>Authorized Signatory</p>
+                    <p style="font-weight: 700; font-size: 9pt; text-transform: uppercase; color: var(--text-muted);">
+                        Start Date</p>
+                    <p>{{start_date}}</p>
                 </div>
                 <div>
-                    <p>Accepted By</p>
-                    <div style="height: 50px;"></div>
-                    <p>____________________</p>
-                    <p>{{candidate.name}}</p>
+                    <p style="font-weight: 700; font-size: 9pt; text-transform: uppercase; color: var(--text-muted);">
+                        Remuneration</p>
+                    <p>{{remuneration}}</p>
+                </div>
+                <div>
+                    <p style="font-weight: 700; font-size: 9pt; text-transform: uppercase; color: var(--text-muted);">
+                        Probation Period</p>
+                    <p>{{probation_period}}</p>
+                </div>
+                <div>
+                    <p style="font-weight: 700; font-size: 9pt; text-transform: uppercase; color: var(--text-muted);">
+                        Location</p>
+                    <p>{{location}}</p>
                 </div>
             </div>
-        </main>
+
+            <p style="margin-top: 20px;"><strong>Key Responsibilities:</strong></p>
+            <p style="white-space: pre-line; margin-bottom: 20px;">{{responsibilities}}</p>
+
+            <p><strong>Benefits:</strong></p>
+            <p style="white-space: pre-line; margin-bottom: 20px;">{{benefits}}</p>
+        </section>
+
+        <section class="offer-closing" style="margin-top: 40px;">
+            <p>Please confirm your acceptance by signing below.</p>
+            <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div>
+                    <p style="border-bottom: 1px solid #000; height: 40px;"></p>
+                    <p style="margin-top: 10px;">{{candidate.name}} (Candidate)</p>
+                </div>
+                <div>
+                    <p style="border-bottom: 1px solid #000; height: 40px;"></p>
+                    <p style="margin-top: 10px;">Authorised Signatory</p>
+                </div>
+            </div>
+        </section>
 
         <div class="footer-accent"></div>
         <footer class="footer-content">
             <p>layer1.studio</p>
-            <p>Private & Confidential</p>
+            <p>Offer Letter</p>
             <p>© 2026 layer1.studio</p>
         </footer>
     </div>
