@@ -185,7 +185,7 @@ function App() {
       </aside>
 
       <main className="h-full flex flex-col" style={{ flex: 1, position: 'relative', minWidth: 0 }}>
-        <header className="panel-header glass" style={{ flexWrap: 'nowrap', overflowX: 'auto', gap: '24px' }}>
+        <header className="panel-header glass" style={{ flexShrink: 0, flexWrap: 'nowrap', overflowX: 'auto', gap: '24px' }}>
           <div className="flex items-center gap-4 shrink-0">
             <div style={{ display: 'flex', background: 'rgba(255,255,255,0.05)', padding: '4px', borderRadius: '12px', border: '1px solid var(--border-white)' }}>
               <button onClick={() => setViewMode('editor')} className={`btn-ghost ${viewMode === 'editor' ? 'active' : ''}`} style={{ background: viewMode === 'editor' ? accentColor : 'transparent', color: viewMode === 'editor' ? 'white' : undefined, border: 'none', padding: '8px 16px' }}>Editor</button>
@@ -213,7 +213,7 @@ function App() {
           </div>
         </header>
 
-        <div className="flex h-full overflow-hidden">
+        <div className="flex overflow-hidden" style={{ flex: 1 }}>
           <div className="editor-panel glass" style={{ width: sidebarOpen ? '440px' : '500px' }}>
             <div className="p-8" style={{ borderBottom: '1px solid var(--border-white)', background: 'rgba(255,255,255,0.01)' }}>
               <h2 style={{ fontSize: '11px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: accentColor }}>
