@@ -261,7 +261,7 @@ function App() {
             </div>
           </div>
 
-          <div style={{ flex: 1, position: 'relative', display: 'flex', justifyContent: 'center', padding: '80px', overflow: 'auto', backgroundColor: '#000', scrollbarWidth: 'thin' }}>
+          <div style={{ flex: 1, position: 'relative', display: 'flex', justifyContent: 'center', padding: '80px', overflow: 'auto', backgroundColor: '#000' }}>
             <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: `radial-gradient(${accentColor} 1px, transparent 1px)`, backgroundSize: '40px 40px', pointerEvents: 'none' }} />
 
             {/* Scroll Wrapper that matches the scaled size */}
