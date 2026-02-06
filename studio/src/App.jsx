@@ -194,19 +194,6 @@ function App() {
           </div>
 
           <div className="flex items-center gap-6" style={{ marginLeft: 'auto' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'rgba(255,255,255,0.05)', padding: '6px 12px', borderRadius: '10px', border: '1px solid var(--border-white)', flexShrink: 0 }}>
-              <span style={{ fontSize: '9px', fontWeight: 900, color: 'var(--text-muted)' }}>ZOOM</span>
-              <input
-                type="range" min="0.3" max="1.5" step="0.05"
-                value={zoom} onChange={(e) => setZoom(parseFloat(e.target.value))}
-                style={{ width: '80px', accentColor: accentColor, cursor: 'pointer' }}
-              />
-              <span style={{ fontSize: '10px', fontWeight: 900, color: accentColor, width: '35px', textAlign: 'right' }}>{Math.round(zoom * 100)}%</span>
-            </div>
-
-            <div className="status-indicator shrink-0">
-              <div className="dot"></div> READY
-            </div>
             <button onClick={() => window.print()} className="btn-primary shrink-0" style={{ padding: '10px 20px' }}>
               <Download size={16} /> <span style={{ fontSize: '12px' }}>Export PDF</span>
             </button>
