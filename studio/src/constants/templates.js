@@ -44,7 +44,8 @@ export const TEMPLATES_CONFIG = {
             client: { name: 'Acme Corp', address: '123 Business Way,\nTech City, UK', email: 'billing@acme.com' },
             items: [
                 { description: 'Web Application Design & Dev', amount: '$4,500' },
-                { description: 'Brand Identity System', amount: '$1,200' }
+                { description: 'Brand Identity System', amount: '$1,200' },
+                { description: 'Loyalty Discount', amount: '-$500' }
             ],
             tax: '20',
             subtotal: '$5,700.00',
