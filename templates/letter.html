@@ -12,9 +12,8 @@
     <div class="page">
         <header class="header">
             <div class="logo-section">
-                <!-- Using a local path that would work if printed, but for preview we can use a placeholder or the actual public asset if served -->
-                <img src="../../public/assets/logo.png" alt="layer1 studio logo">
-                <div class="badge">Official Correspondence</div>
+                <img src="../l1s-logo.png" alt="layer1 studio logo">
+                <div class="badge">{{badge_text}}</div>
             </div>
             <div class="studio-info">
                 <h1>layer1.studio</h1>
@@ -27,43 +26,31 @@
         <section class="doc-meta">
             <div class="client-info">
                 <h3>To</h3>
-                <p><strong>Recipient Name</strong></p>
-                <p>Title / Company</p>
-                <p>Address Line 1</p>
-                <p>City, Country</p>
+                <p><strong>{{recipient.name}}</strong></p>
+                {{#if recipient.title}}<p>{{recipient.title}}</p>{{/if}}
+                <p>{{recipient.address_1}}</p>
+                <p>{{recipient.city_country}}</p>
             </div>
             <div class="doc-info" style="text-align: right;">
                 <h3>Date</h3>
-                <p>February 6, 2026</p>
+                <p>{{date}}</p>
                 <h3 style="margin-top: 15px;">Subject</h3>
-                <p class="serif-accent">Professional Engagement: layer1 studio</p>
+                <p class="serif-accent">{{subject}}</p>
             </div>
         </section>
 
         <main class="content">
-            <p style="margin-bottom: 20px;">Dear [Recipient Name],</p>
+            <p style="margin-bottom: 20px;">Dear {{recipient.name}},</p>
 
-            <p style="margin-bottom: 20px; line-height: 1.6;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu
-                sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla
-                enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.
-            </p>
-
-            <p style="margin-bottom: 20px; line-height: 1.6;">
-                At <span style="font-weight: 600; color: var(--primary);">layer1 studio</span>, we believe in building
-                high-velocity web and mobile experiences that don't just work, but inspire. Our approach combines
-                technical excellence with a deep understanding of user behavior.
-            </p>
-
-            <p style="margin-bottom: 40px; line-height: 1.6;">
-                We look forward to collaborating on this project and bringing your vision to life.
-            </p>
+            <div class="letter-body">
+                {{{content}}}
+            </div>
 
             <div class="signature">
                 <p>Sincerely,</p>
                 <div style="height: 60px;"></div>
-                <p><strong>The layer1 Team</strong></p>
-                <p style="color: var(--text-muted); font-size: 10pt;">Design & Engineering</p>
+                <p><strong>{{sender.name}}</strong></p>
+                <p style="color: var(--text-muted); font-size: 10pt;">{{sender.title}}</p>
             </div>
         </main>
 

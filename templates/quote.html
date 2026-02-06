@@ -12,29 +12,29 @@
     <div class="page">
         <header class="header">
             <div class="logo-section">
-                <img src="../../public/assets/logo.png" alt="layer1 studio logo">
-                <div class="badge">Project Quote</div>
+                <img src="../l1s-logo.png" alt="layer1 studio logo">
+                <div class="badge">{{badge_text}}</div>
             </div>
             <div class="studio-info">
                 <h1>layer1.studio</h1>
                 <p>London • Colombo</p>
                 <p>studio.layer1@gmail.com</p>
-                <p>Quote #Q2026-001</p>
+                <p>Quote #{{quote_number}}</p>
             </div>
         </header>
 
         <section class="doc-meta">
             <div class="client-info">
                 <h3>Client</h3>
-                <p><strong>Project Name / Client</strong></p>
-                <p>Contact Person</p>
-                <p>Email@client.com</p>
+                <p><strong>{{project_name}} / {{client.name}}</strong></p>
+                <p>{{client.contact}}</p>
+                <p>{{client.email}}</p>
             </div>
             <div class="doc-info" style="text-align: right;">
                 <h3>Valid Until</h3>
-                <p>March 6, 2026</p>
+                <p>{{valid_until}}</p>
                 <h3 style="margin-top: 15px;">Prepared By</h3>
-                <p class="serif-accent">layer1 studio Design Team</p>
+                <p class="serif-accent">{{prepared_by}}</p>
             </div>
         </section>
 
@@ -47,35 +47,19 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each services}}
                 <tr>
                     <td>
-                        <strong>Product Strategy & Technical Audit</strong><br>
-                        <small style="color: var(--text-muted)">In-depth analysis of existing infrastructure and roadmap
-                            planning.</small>
+                        <strong>{{name}}</strong><br>
+                        <small style="color: var(--text-muted)">{{description}}</small>
                     </td>
-                    <td style="text-align: center;">1 Week</td>
-                    <td style="text-align: right;">$2,400.00</td>
+                    <td style="text-align: center;">{{timeline}}</td>
+                    <td style="text-align: right;">{{investment}}</td>
                 </tr>
-                <tr>
-                    <td>
-                        <strong>UI/UX Design Phase</strong><br>
-                        <small style="color: var(--text-muted)">High-fidelity prototypes and brand integration.</small>
-                    </td>
-                    <td style="text-align: center;">3 Weeks</td>
-                    <td style="text-align: right;">$4,500.00</td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Full-stack Web Development</strong><br>
-                        <small style="color: var(--text-muted)">Custom React/Next.js implementation with secure API
-                            layer.</small>
-                    </td>
-                    <td style="text-align: center;">6 Weeks</td>
-                    <td style="text-align: right;">$12,000.00</td>
-                </tr>
+                {{/each}}
                 <tr class="total-row">
                     <td class="label" colspan="2">Total Project Estimate</td>
-                    <td class="amount" style="text-align: right;">$18,900.00</td>
+                    <td class="amount" style="text-align: right;">{{total_estimate}}</td>
                 </tr>
             </tbody>
         </table>
@@ -84,9 +68,9 @@
             <h3 style="font-size: 10pt; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">Terms
                 & Notes</h3>
             <ul style="font-size: 10pt; color: var(--text-muted); padding-left: 20px; line-height: 1.6;">
-                <li>Payment terms: 50% upfront, 50% upon completion.</li>
-                <li>Quote is valid for 30 days from the issue date.</li>
-                <li>Timeline is an estimate and subject to final requirements.</li>
+                {{#each terms}}
+                <li>{{this}}</li>
+                {{/each}}
             </ul>
         </section>
 

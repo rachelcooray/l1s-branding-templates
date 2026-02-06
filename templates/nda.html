@@ -12,7 +12,7 @@
     <div class="page">
         <header class="header">
             <div class="logo-section">
-                <img src="../../public/assets/logo.png" alt="layer1 studio logo">
+                <img src="../l1s-logo.png" alt="layer1 studio logo">
                 <div class="badge" style="background: #0a0c10;">NDA</div>
             </div>
             <div class="studio-info">
@@ -29,13 +29,13 @@
 
         <main class="content" style="font-size: 9.5pt; line-height: 1.5;">
             <p style="margin-bottom: 15px;">
-                This Non-Disclosure Agreement (the "Agreement") is entered into on this ____ day of ________, 2026, by
+                This Non-Disclosure Agreement (the "Agreement") is entered into on this {{entry_date}}, by
                 and between:
             </p>
 
             <p style="margin-bottom: 15px;">
                 <strong>layer1.studio</strong>, with business operations in London and Colombo ("Disclosing Party"), and
-                <strong>[Counterparty Name]</strong>, located at [Address] ("Receiving Party").
+                <strong>{{counterparty.name}}</strong>, located at {{counterparty.address}} ("Receiving Party").
             </p>
 
             <h3 style="font-size: 10pt; margin-top: 20px; text-transform: uppercase;">1. Definition of Confidential
@@ -66,13 +66,13 @@
                     <p><strong>Disclosing Party</strong></p>
                     <div style="height: 40px; border-bottom: 1px solid #000; margin-bottom: 5px;"></div>
                     <p>Signature</p>
-                    <p style="margin-top: 10px;">Name: ________________</p>
+                    <p style="margin-top: 10px;">Name: {{disclosing_party_signatory}}</p>
                 </div>
                 <div style="flex: 1;">
                     <p><strong>Receiving Party</strong></p>
                     <div style="height: 40px; border-bottom: 1px solid #000; margin-bottom: 5px;"></div>
                     <p>Signature</p>
-                    <p style="margin-top: 10px;">Name: ________________</p>
+                    <p style="margin-top: 10px;">Name: {{receiving_party_signatory}}</p>
                 </div>
             </div>
         </main>

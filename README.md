@@ -19,9 +19,35 @@ A collection of professional business document templates for **layer1.studio**.
 - **Brand Consistency**: Unified styling for all business documents.
 - **Ease of Use**: Simple HTML/CSS structure for easy customization.
 
-## Usage
+## Automated PDF Generation
 
-These templates are designed to be used as base documents for various business needs. You can preview them by opening the `.html` files in any web browser.
+This repository includes a document engine to generate branded PDFs from JSON data.
+
+### 1. Requirements
+
+- [Node.js](https://nodejs.org/) installed.
+- Install dependencies:
+  ```bash
+  npm install
+  ```
+
+### 2. How to Generate a Document
+
+1.  **Prepare your data**: Edit or create a JSON file in the `data/` folder (e.g., `data/invoice.json`).
+2.  **Run the generator**:
+    ```bash
+    node generate.js [type]
+    ```
+    Replace `[type]` with one of the following: `appointment`, `invoice`, `letter`, `nda`, `quote`, `receipt`, `service_letter`, `sow`.
+
+3.  **Find your PDF**: The generated file will be in the `/output` folder.
+
+### Example
+
+To generate an invoice:
+```bash
+node generate.js invoice
+```
 
 ---
 © 2026 layer1.studio

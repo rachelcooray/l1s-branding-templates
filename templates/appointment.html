@@ -12,7 +12,7 @@
     <div class="page">
         <header class="header">
             <div class="logo-section">
-                <img src="../../public/assets/logo.png" alt="layer1 studio logo">
+                <img src="../l1s-logo.png" alt="layer1 studio logo">
                 <div class="badge">Appointment Letter</div>
             </div>
             <div class="studio-info">
@@ -24,20 +24,20 @@
         <section class="doc-meta">
             <div class="client-info">
                 <h3>Strictly Confidential</h3>
-                <p><strong>Candidate Name</strong></p>
-                <p>Email@candidate.com</p>
-                <p>Date: February 6, 2026</p>
+                <p><strong>{{candidate.name}}</strong></p>
+                <p>{{candidate.email}}</p>
+                <p>Date: {{date}}</p>
             </div>
             <div class="doc-info" style="text-align: right;">
                 <h3>Position</h3>
-                <p class="serif-accent">Senior Product Engineer</p>
+                <p class="serif-accent">{{position}}</p>
                 <h3 style="margin-top: 15px;">Reference</h3>
-                <p>L1-HR-2026-012</p>
+                <p>{{reference}}</p>
             </div>
         </section>
 
         <main class="content" style="font-size: 10.5pt; line-height: 1.6;">
-            <p style="margin-bottom: 20px;">Dear [Candidate Name],</p>
+            <p style="margin-bottom: 20px;">Dear {{candidate.name}},</p>
 
             <p style="margin-bottom: 15px;">
                 Following our recent discussions, we are delighted to offer you a position at <span
@@ -47,16 +47,15 @@
 
             <h3 style="font-size: 11pt; margin-bottom: 10px; color: var(--text-main);">1. Key Terms of Appointment</h3>
             <ul style="margin-bottom: 20px; padding-left: 20px;">
-                <li><strong>Start Date:</strong> March 1, 2026</li>
-                <li><strong>Reporting To:</strong> Creative Director / Technical Lead</li>
-                <li><strong>Remuneration:</strong> [Amount] per annum, payable monthly.</li>
-                <li><strong>Location:</strong> [Remote / London / Colombo]</li>
+                <li><strong>Start Date:</strong> {{start_date}}</li>
+                <li><strong>Reporting To:</strong> {{reporting_to}}</li>
+                <li><strong>Remuneration:</strong> {{remuneration}} per annum, payable monthly.</li>
+                <li><strong>Location:</strong> {{location}}</li>
             </ul>
 
             <h3 style="font-size: 11pt; margin-bottom: 10px; color: var(--text-main);">2. Responsibilities</h3>
             <p style="margin-bottom: 20px;">
-                You will be responsible for leading the development of high-fidelity web experiences, collaborating with
-                the design team, and ensuring technical excellence across all client projects.
+                {{responsibilities}}
             </p>
 
             <h3 style="font-size: 11pt; margin-bottom: 10px; color: var(--text-main);">3. Confidentiality</h3>
@@ -81,7 +80,7 @@
                     <p>Accepted By</p>
                     <div style="height: 50px;"></div>
                     <p>____________________</p>
-                    <p>[Candidate Name]</p>
+                    <p>{{candidate.name}}</p>
                 </div>
             </div>
         </main>

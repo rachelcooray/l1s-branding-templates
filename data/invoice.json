@@ -1,0 +1,29 @@
+{
+    "document_type": "Invoice",
+    "invoice_number": "INV-2026-102",
+    "date_issued": "February 6, 2026",
+    "due_date": "February 20, 2026",
+    "client": {
+        "name": "Acme Corp",
+        "address_1": "123 Innovation Drive",
+        "city_country": "London, UK",
+        "vat": "GB123456789"
+    },
+    "items": [
+        {
+            "description": "Monthly Retainer - Technical Lead",
+            "subtext": "Consulting and code review for February 2026.",
+            "qty": "1",
+            "rate": "$3,500.00",
+            "amount": "$3,500.00"
+        },
+        {
+            "description": "Mobile UI Kit Polish",
+            "subtext": "Finalizing design system components.",
+            "qty": "20 hrs",
+            "rate": "$75.00",
+            "amount": "$1,500.00"
+        }
+    ],
+    "total_amount": "$5,000.00"
+}
