@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layer1.studio - Payment Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="logo-section">
+                <img src="../l1s-logo.png" alt="layer1 studio logo">
+                <div class="badge" style="background: #27ae60;">Payment Received</div>
+            </div>
+            <div class="studio-info">
+                <h1>layer1.studio</h1>
+                <p>London • Colombo</p>
+                <p>studio.layer1@gmail.com</p>
+                <p>Receipt #{{receipt_number}}</p>
+            </div>
+        </header>
+
+        <section class="doc-meta">
+            <div class="client-info">
+                <h3>Received From</h3>
+                <p><strong>{{client.name}}</strong></p>
+                <p>{{client.address_1}}</p>
+                <p>{{client.city_country}}</p>
+            </div>
+            <div class="doc-info" style="text-align: right;">
+                <h3>Date Paid</h3>
+                <p>{{date_paid}}</p>
+                <h3 style="margin-top: 15px;">Related Invoice</h3>
+                <p>{{invoice_number}}</p>
+            </div>
+        </section>
+
+        <div
+            style="background: var(--slate-100); padding: 40px; border-radius: 12px; text-align: center; margin-bottom: 40px;">
+            <p style="color: var(--text-muted); font-size: 11pt; margin-bottom: 10px;">Total Amount Received</p>
+            <h2 style="font-size: 32pt; color: var(--text-main);">{{total_amount}}</h2>
+            <p class="serif-accent" style="margin-top: 15px; color: var(--primary);">Thank you for your payment!</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 70%">Transaction Details</th>
+                    <th style="width: 30%; text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>Invoice #{{invoice_number}} Payment</strong><br>
+                        <small style="color: var(--text-muted)">Payment method: {{payment_method}}</small>
+                    </td>
+                    <td style="text-align: right;">{{total_amount}}</td>
+                </tr>
+                <tr class="total-row">
+                    <td class="label">Balance Remaining</td>
+                    <td class="amount" style="text-align: right;">{{balance_remaining}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <section class="notes">
+            <h3 style="font-size: 10pt; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">Notes
+            </h3>
+            <p style="font-size: 10pt; color: var(--text-muted); line-height: 1.6;">
+                {{notes}}
+            </p>
+        </section>
+
+        <div class="footer-accent"></div>
+        <footer class="footer-content">
+            <p>layer1.studio</p>
+            <p>London • Colombo</p>
+            <p>© 2026 layer1.studio</p>
+        </footer>
+    </div>
+</body>
+
+</html>

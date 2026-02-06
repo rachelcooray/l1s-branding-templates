@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layer1.studio - Statement of Work</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="logo-section">
+                <img src="../l1s-logo.png" alt="layer1 studio logo">
+                <div class="badge" style="background: var(--primary);">Statement of Work</div>
+            </div>
+            <div class="studio-info">
+                <h1>layer1.studio</h1>
+                <p>Project Specification</p>
+            </div>
+        </header>
+
+        <section class="doc-meta">
+            <div class="client-info">
+                <h3>Project Title</h3>
+                <p><strong>{{project_name}}</strong></p>
+                <p>Client: {{client.name}}</p>
+            </div>
+            <div class="doc-info" style="text-align: right;">
+                <h3>SOW Reference</h3>
+                <p>{{sow_reference}}</p>
+                <h3 style="margin-top: 15px;">Date</h3>
+                <p>{{date}}</p>
+            </div>
+        </section>
+
+        <main class="content" style="font-size: 10pt; line-height: 1.6;">
+            <div style="margin-bottom: 30px;">
+                <h3
+                    style="color: var(--primary); text-transform: uppercase; font-size: 11pt; border-left: 4px solid var(--primary); padding-left: 10px; margin-bottom: 10px;">
+                    1. Project Overview</h3>
+                <p>{{{overview}}}</p>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h3
+                    style="color: var(--primary); text-transform: uppercase; font-size: 11pt; border-left: 4px solid var(--primary); padding-left: 10px; margin-bottom: 10px;">
+                    2. Deliverables</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 70%">Deliverable</th>
+                            <th style="width: 30%; text-align: right;">Deadline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each deliverables}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td style="text-align: right;">{{deadline}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h3
+                    style="color: var(--primary); text-transform: uppercase; font-size: 11pt; border-left: 4px solid var(--primary); padding-left: 10px; margin-bottom: 10px;">
+                    3. Out of Scope</h3>
+                <p>{{out_of_scope}}</p>
+            </div>
+
+            <div style="margin-top: 40px; font-size: 9pt; color: var(--text-muted);">
+                <p>This SOW is finalized upon signature by both parties.</p>
+            </div>
+        </main>
+
+        <div class="footer-accent"></div>
+        <footer class="footer-content">
+            <p>layer1.studio</p>
+            <p>Design & Technology Collective</p>
+            <p>© 2026 layer1.studio</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layer1.studio - {{document_type}}</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="logo-section">
+                <!-- Use absolute path or base64 for logo in production/script context -->
+                <img src="../l1s-logo.png" alt="layer1 studio logo">
+                <div class="badge" style="background: var(--text-main);">{{document_type}}</div>
+            </div>
+            <div class="studio-info">
+                <h1>layer1.studio</h1>
+                <p>London • Colombo</p>
+                <p>studio.layer1@gmail.com</p>
+                <p>{{document_type}} #{{invoice_number}}</p>
+            </div>
+        </header>
+
+        <section class="doc-meta">
+            <div class="client-info">
+                <h3>Bill To</h3>
+                <p><strong>{{client.name}}</strong></p>
+                <p>{{client.address_1}}</p>
+                <p>{{client.city_country}}</p>
+                <p>VAT: {{client.vat}}</p>
+            </div>
+            <div class="doc-info" style="text-align: right;">
+                <h3>Date Issued</h3>
+                <p>{{date_issued}}</p>
+                <h3 style="margin-top: 15px;">Due Date</h3>
+                <p style="color: #e63946; font-weight: 700;">{{due_date}}</p>
+            </div>
+        </section>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 50%">Item / Service</th>
+                    <th style="width: 15%; text-align: center;">Qty</th>
+                    <th style="width: 15%; text-align: right;">Rate</th>
+                    <th style="width: 20%; text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each items}}
+                <tr>
+                    <td>
+                        <strong>{{description}}</strong><br>
+                        <small style="color: var(--text-muted)">{{subtext}}</small>
+                    </td>
+                    <td style="text-align: center;">{{qty}}</td>
+                    <td style="text-align: right;">{{rate}}</td>
+                    <td style="text-align: right;">{{amount}}</td>
+                </tr>
+                {{/each}}
+                <tr class="total-row">
+                    <td colspan="2"></td>
+                    <td class="label">Total Amount Due</td>
+                    <td class="amount" style="text-align: right;">{{total_amount}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <section class="payment-methods" style="margin-top: 40px;">
+            <h3 style="font-size: 10pt; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">
+                Payment Instructions</h3>
+            <div style="background: var(--slate-100); padding: 20px; border-radius: 8px; font-size: 10pt;">
+                <p><strong>Bank Transfer (GBP)</strong></p>
+                <p>Account Name: LAYER1 STUDIO LTD</p>
+                <p>Sort Code: 00-11-22 | Account: 12345678</p>
+                <p style="margin-top: 10px;"><strong>Wise / International</strong></p>
+                <p>IBAN: GB82 WISE 1234 5678 9012 34</p>
+            </div>
+        </section>
+
+        <div class="footer-accent"></div>
+        <footer class="footer-content">
+            <p>layer1.studio</p>
+            <p>Thank you for your business!</p>
+            <p>© 2026 layer1.studio</p>
+        </footer>
+    </div>
+</body>
+
+</html>

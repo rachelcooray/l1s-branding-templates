@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layer1.studio - Letter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="logo-section">
+                <img src="../l1s-logo.png" alt="layer1 studio logo">
+                <div class="badge">{{badge_text}}</div>
+            </div>
+            <div class="studio-info">
+                <h1>layer1.studio</h1>
+                <p>London • Colombo</p>
+                <p>studio.layer1@gmail.com</p>
+                <p>+44 7770 225546 | +94 7717 70570</p>
+            </div>
+        </header>
+
+        <section class="doc-meta">
+            <div class="client-info">
+                <h3>To</h3>
+                <p><strong>{{recipient.name}}</strong></p>
+                {{#if recipient.title}}<p>{{recipient.title}}</p>{{/if}}
+                <p>{{recipient.address_1}}</p>
+                <p>{{recipient.city_country}}</p>
+            </div>
+            <div class="doc-info" style="text-align: right;">
+                <h3>Date</h3>
+                <p>{{date}}</p>
+                <h3 style="margin-top: 15px;">Subject</h3>
+                <p class="serif-accent">{{subject}}</p>
+            </div>
+        </section>
+
+        <main class="content">
+            <p style="margin-bottom: 20px;">Dear {{recipient.name}},</p>
+
+            <div class="letter-body">
+                {{{content}}}
+            </div>
+
+            <div class="signature">
+                <p>Sincerely,</p>
+                <div style="height: 60px;"></div>
+                <p><strong>{{sender.name}}</strong></p>
+                <p style="color: var(--text-muted); font-size: 10pt;">{{sender.title}}</p>
+            </div>
+        </main>
+
+        <div class="footer-accent"></div>
+        <footer class="footer-content">
+            <p>layer1.studio</p>
+            <p>London • Colombo</p>
+            <p>© 2026 layer1.studio</p>
+        </footer>
+    </div>
+</body>
+
+</html>

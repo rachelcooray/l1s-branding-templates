@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layer1.studio - Quote</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="logo-section">
+                <img src="../l1s-logo.png" alt="layer1 studio logo">
+                <div class="badge">{{badge_text}}</div>
+            </div>
+            <div class="studio-info">
+                <h1>layer1.studio</h1>
+                <p>London • Colombo</p>
+                <p>studio.layer1@gmail.com</p>
+                <p>Quote #{{quote_number}}</p>
+            </div>
+        </header>
+
+        <section class="doc-meta">
+            <div class="client-info">
+                <h3>Client</h3>
+                <p><strong>{{project_name}} / {{client.name}}</strong></p>
+                <p>{{client.contact}}</p>
+                <p>{{client.email}}</p>
+            </div>
+            <div class="doc-info" style="text-align: right;">
+                <h3>Valid Until</h3>
+                <p>{{valid_until}}</p>
+                <h3 style="margin-top: 15px;">Prepared By</h3>
+                <p class="serif-accent">{{prepared_by}}</p>
+            </div>
+        </section>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%">Service Description</th>
+                    <th style="width: 20%; text-align: center;">Timeline</th>
+                    <th style="width: 20%; text-align: right;">Investment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each services}}
+                <tr>
+                    <td>
+                        <strong>{{name}}</strong><br>
+                        <small style="color: var(--text-muted)">{{description}}</small>
+                    </td>
+                    <td style="text-align: center;">{{timeline}}</td>
+                    <td style="text-align: right;">{{investment}}</td>
+                </tr>
+                {{/each}}
+                <tr class="total-row">
+                    <td class="label" colspan="2">Total Project Estimate</td>
+                    <td class="amount" style="text-align: right;">{{total_estimate}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <section class="notes">
+            <h3 style="font-size: 10pt; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">Terms
+                & Notes</h3>
+            <ul style="font-size: 10pt; color: var(--text-muted); padding-left: 20px; line-height: 1.6;">
+                {{#each terms}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </section>
+
+        <div class="footer-accent"></div>
+        <footer class="footer-content">
+            <p>layer1.studio</p>
+            <p>London • Colombo</p>
+            <p>© 2026 layer1.studio</p>
+        </footer>
+    </div>
+</body>
+
+</html>
